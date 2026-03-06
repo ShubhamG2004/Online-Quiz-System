@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz - Online Quiz System</title>
 <style>
     * {
@@ -17,82 +18,266 @@
         padding: 0;
         box-sizing: border-box;
     }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         padding: 20px;
     }
+    
     .container {
         background: white;
         padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 800px;
         margin: 0 auto;
+        animation: fadeIn 0.6s ease;
     }
+    
     .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e2e8f0;
     }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .quiz-icon {
+        font-size: 36px;
+    }
+    
     h2 {
-        color: #333;
+        color: #2d3748;
+        font-size: 28px;
+        font-weight: 700;
     }
+    
+    .header-right {
+        text-align: right;
+    }
+    
+    .user-info {
+        color: #718096;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .timer-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #fee 0%, #fdd 100%);
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 2px solid #fcc;
+    }
+    
     .timer {
         font-size: 24px;
         color: #e74c3c;
         font-weight: bold;
     }
+    
+    .timer.warning {
+        animation: pulse 1s ease-in-out infinite;
+    }
+    
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
     .question-container {
         margin-bottom: 30px;
-        padding: 20px;
-        background-color: #f5f5f5;
-        border-radius: 5px;
+        padding: 25px;
+        background: linear-gradient(135deg, #f8f9ff 0%, #fef9ff 100%);
+        border-radius: 15px;
+        border: 2px solid #e6e8ff;
+        transition: all 0.3s ease;
+        animation: fadeIn 0.4s ease;
     }
+    
+    .question-container:hover {
+        border-color: #667eea;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    }
+    
     .question-title {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 15px;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 20px;
+        font-size: 17px;
+        line-height: 1.6;
     }
+    
     .option {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        position: relative;
     }
+    
     .option input[type="radio"] {
-        margin-right: 10px;
+        position: absolute;
+        opacity: 0;
         cursor: pointer;
     }
+    
     .option label {
+        display: block;
+        padding: 14px 20px 14px 50px;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
         cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 15px;
+        color: #4a5568;
     }
+    
+    .option label:before {
+        content: '';
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid #cbd5e0;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .option label:after {
+        content: '';
+        position: absolute;
+        left: 23px;
+        top: 50%;
+        transform: translateY(-50%) scale(0);
+        width: 10px;
+        height: 10px;
+        background: #667eea;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+    
+    .option input[type="radio"]:checked + label {
+        background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+        border-color: #667eea;
+        color: #2d3748;
+        font-weight: 500;
+    }
+    
+    .option input[type="radio"]:checked + label:before {
+        border-color: #667eea;
+    }
+    
+    .option input[type="radio"]:checked + label:after {
+        transform: translateY(-50%) scale(1);
+    }
+    
+    .option label:hover {
+        border-color: #667eea;
+        background: #fafcff;
+    }
+    
     .submit-btn {
         width: 100%;
-        padding: 12px;
-        background-color: #667eea;
+        padding: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
-        border-radius: 5px;
-        font-size: 16px;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 600;
         cursor: pointer;
-        transition: 0.3s;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        margin-top: 10px;
     }
+    
     .submit-btn:hover {
-        background-color: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
     }
-    .user-info {
-        color: #666;
+    
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            padding: 25px 20px;
+        }
+        
+        .header {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+        
+        .header-right {
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: 22px;
+        }
+        
+        .question-title {
+            font-size: 16px;
+        }
     }
 </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h2>Quiz</h2>
-            <div>
-                <div class="user-info">Hello, <%= session.getAttribute("userName") %></div>
-                <div class="timer">Time Left: <span id="timer">60</span>s</div>
+            <div class="header-left">
+                <span class="quiz-icon">📝</span>
+                <h2>Java Quiz</h2>
             </div>
+            <div class="header-right">
+                <div class="user-info">👤 <%= session.getAttribute("userName") %></div>
+                <div class="timer-container">
+                    <span>⏱️</span>
+                    <div class="timer" id="timer">60</div>
+                    <span>sec</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
         </div>
 
         <form action="QuizServlet" method="post" id="quizForm">
@@ -182,18 +367,49 @@
                 <input type="hidden" name="correct5" value="a">
             </div>
 
-            <button type="submit" class="submit-btn">Submit Quiz</button>
+            <button type="submit" class="submit-btn">🚀 Submit Quiz</button>
         </form>
     </div>
 
     <script>
         var timeLeft = 60;
-
+        var totalQuestions = 5;
+        var answeredQuestions = 0;
+        
+        // Track progress
+        function updateProgress() {
+            var radios = document.querySelectorAll('input[type="radio"]:checked');
+            answeredQuestions = 0;
+            var checkedQuestions = new Set();
+            
+            radios.forEach(function(radio) {
+                var questionName = radio.name;
+                if (!checkedQuestions.has(questionName)) {
+                    answeredQuestions++;
+                    checkedQuestions.add(questionName);
+                }
+            });
+            
+            var progress = (answeredQuestions / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        // Add event listeners to all radio buttons
+        var allRadios = document.querySelectorAll('input[type="radio"]');
+        allRadios.forEach(function(radio) {
+            radio.addEventListener('change', updateProgress);
+        });
+        
+        // Timer
         var timer = setInterval(function(){
-
             timeLeft--;
-
-            document.getElementById("timer").innerHTML = timeLeft;
+            var timerElement = document.getElementById("timer");
+            timerElement.innerHTML = timeLeft;
+            
+            // Add warning animation when time is low
+            if (timeLeft <= 10 && !timerElement.classList.contains('warning')) {
+                timerElement.classList.add('warning');
+            }
 
             if(timeLeft <= 0){
                 clearInterval(timer);

@@ -219,6 +219,10 @@
         <div class="link">
             Already have an account? <a href="login.jsp">Login here</a>
         </div>
+        
+        <div class="link" style="margin-top: 10px;">
+            <a href="LeaderboardServlet" style="color: #f5af19; font-weight: 600;">🏆 View Leaderboard</a>
+        </div>
     </div>
 </body>
 </html>

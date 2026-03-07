@@ -54,6 +54,15 @@
         <url-pattern>/AddQuestionServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LeaderboardServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.LeaderboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LeaderboardServlet</servlet-name>
+        <url-pattern>/LeaderboardServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- Welcome File List -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

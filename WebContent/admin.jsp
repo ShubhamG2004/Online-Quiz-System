@@ -239,6 +239,15 @@
             
             <input type="submit" value="➕ Add Question to Quiz">
         </form>
+        
+        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+            <a href="LeaderboardServlet" style="padding: 12px 30px; border-radius: 25px; text-decoration: none; background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); color: white; font-weight: 600; transition: all 0.3s ease;">
+                🏆 View Leaderboard
+            </a>
+            <a href="index.jsp" style="padding: 12px 30px; border-radius: 25px; text-decoration: none; background: #6c757d; color: white; font-weight: 600; transition: all 0.3s ease;">
+                🏠 Home
+            </a>
+        </div>
     </div>
 </body>
 </html>

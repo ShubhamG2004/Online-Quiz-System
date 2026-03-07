@@ -284,6 +284,9 @@
             <a href="quiz.jsp" class="btn btn-quiz">
                 <span>🔄</span> Try Again
             </a>
+            <a href="LeaderboardServlet" class="btn btn-leaderboard" style="background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);">
+                <span>🏆</span> Leaderboard
+            </a>
             <a href="index.jsp" class="btn btn-home">
                 <span>🏠</span> Home
             </a>

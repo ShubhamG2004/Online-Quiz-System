@@ -175,7 +175,7 @@
             </div>
             <div class="feature">
                 <div class="feature-icon">🏆</div>
-                <div class="feature-text">Get Results</div>
+                <div class="feature-text">Leaderboard</div>
             </div>
         </div>
         
@@ -185,6 +185,9 @@
             </a>
             <a href="register.jsp" class="btn btn-register">
                 <span>✨</span> Register
+            </a>
+            <a href="LeaderboardServlet" class="btn btn-leaderboard" style="background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); color: white;">
+                <span>🏆</span> Leaderboard
             </a>
         </div>
     </div>

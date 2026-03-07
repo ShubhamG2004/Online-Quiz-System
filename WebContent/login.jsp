@@ -258,6 +258,10 @@
         <div class="link">
             Don't have an account? <a href="register.jsp">Create one now</a>
         </div>
+        
+        <div class="link" style="margin-top: 10px;">
+            <a href="LeaderboardServlet" style="color: #f5af19; font-weight: 600;">🏆 View Leaderboard</a>
+        </div>
     </div>
 </body>
 </html>

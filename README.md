@@ -32,16 +32,20 @@ OnlineQuizSystem/
 │   │   ├── RegisterServlet.java
 │   │   ├── QuizServlet.java
 │   │   ├── ResultServlet.java
-│   │   └── AddQuestionServlet.java
+│   │   ├── AddQuestionServlet.java
+│   │   ├── LeaderboardServlet.java
+│   │   └── ManageCategoriesServlet.java
 │   │
 │   ├── dao/
 │   │   ├── UserDAO.java
-│   │   └── QuestionDAO.java
+│   │   ├── QuestionDAO.java
+│   │   └── CategoryDAO.java
 │   │
 │   ├── model/
 │   │   ├── User.java
 │   │   ├── Question.java
-│   │   └── Result.java
+│   │   ├── Result.java
+│   │   └── Category.java
 │   │
 │   └── util/
 │       └── DBConnection.java
@@ -53,11 +57,15 @@ OnlineQuizSystem/
 │   ├── quiz.jsp
 │   ├── result.jsp
 │   ├── admin.jsp
+│   ├── categories.jsp
+│   ├── leaderboard.jsp
 │   │
 │   └── WEB-INF/
 │       └── web.xml
 │
 ├── database_setup.sql
+├── database_migration_categories.sql
+├── CATEGORIES_FEATURE.md
 └── README.md
 ```
 
@@ -148,6 +156,12 @@ Or use an IDE like Eclipse/IntelliJ to build automatically.
 ### For Administrators
 
 1. Navigate to `admin.jsp`
+2. Select a category for the question
+3. Fill in question details and options
+4. Mark the correct answer
+5. Submit to add the question to the database
+6. Manage categories via "Manage Categories" link
+7. View leaderboard to see top performers
 2. Add new questions with 4 options and correct answer
 3. Questions will be available for all users in the quiz
 
@@ -174,8 +188,11 @@ Login with:
 ✅ Score Calculation  
 ✅ Result Display with Percentage  
 ✅ Admin Panel for Adding Questions  
+✅ **Question Categories** - Organize questions by topic/subject  
+✅ **Category Management** - Add, view, and delete categories  
 ✅ Responsive Design  
 ✅ Database Integration (JDBC)  
+✅ Leaderboard with Rankings  
 
 ## 🚀 Advanced Features (For Resume Enhancement)
 
@@ -183,14 +200,16 @@ Consider adding these features:
 
 - ✨ **Random Questions** - Shuffle questions for each quiz attempt
 - ⏰ **Pagination** - Display questions one by one
-- 🏆 **Leaderboard** - Show top scorers with ranking
-- 📊 **Result History** - View past quiz attempts
+- � **Category-Based Quizzes** - Allow users to select quiz by category
+- 📊 **Result History** - View past quiz attempts with detailed breakdown
 - 🔐 **Password Hashing** - Use BCrypt for password security
 - 📧 **Email Verification** - Verify emails during registration
-- 🎯 **Difficulty Levels** - Easy, Medium, Hard questions
-- 📱 **Mobile Responsive** - Better mobile experience
+- 🎯 **Difficulty Levels** - Easy, Medium, Hard questions within categories
+- 📱 **Mobile Responsive** - Better mobile experience optimization
 - 🌙 **Dark Mode** - Toggle theme option
-- 📈 **Analytics Dashboard** - Statistics for admins
+- 📈 **Analytics Dashboard** - Statistics for questions, categories, and users
+- ✏️ **Edit/Delete Questions** - Manage existing questions
+- 🏅 **Category-Based Leaderboards** - Show top scorers per category
 
 ## 🔧 Troubleshooting
 

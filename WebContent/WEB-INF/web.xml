@@ -63,6 +63,15 @@
         <url-pattern>/LeaderboardServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ManageCategoriesServlet</servlet-name>
+        <servlet-class>com.quiz.servlet.ManageCategoriesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageCategoriesServlet</servlet-name>
+        <url-pattern>/ManageCategoriesServlet</url-pattern>
+    </servlet-mapping>
+
     <!-- Welcome File List -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, com.quiz.dao.CategoryDAO, com.quiz.model.Category" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -198,6 +199,22 @@
         
         <form action="AddQuestionServlet" method="post">
             <div class="form-group">
+                <label for="category">Category <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="">-- Select a category --</option>
+                    <%
+                        CategoryDAO categoryDAO = new CategoryDAO();
+                        List<Category> categories = categoryDAO.getAllCategories();
+                        for(Category cat : categories) {
+                    %>
+                    <option value="<%= cat.getId() %>"><%= cat.getName() %></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
+            
+            <div class="form-group">
                 <label for="question">Question <span class="required">*</span></label>
                 <textarea id="question" name="question" placeholder="Enter your question here..." required></textarea>
             </div>
@@ -241,6 +258,9 @@
         </form>
         
         <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+            <a href="categories.jsp" style="padding: 12px 30px; border-radius: 25px; text-decoration: none; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; font-weight: 600; transition: all 0.3s ease;">
+                📚 Manage Categories
+            </a>
             <a href="LeaderboardServlet" style="padding: 12px 30px; border-radius: 25px; text-decoration: none; background: linear-gradient(135deg, #f5af19 0%, #f12711 100%); color: white; font-weight: 600; transition: all 0.3s ease;">
                 🏆 View Leaderboard
             </a>

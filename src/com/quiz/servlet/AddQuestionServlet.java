@@ -17,12 +17,22 @@ public class AddQuestionServlet extends HttpServlet {
         String option3 = request.getParameter("option3");
         String option4 = request.getParameter("option4");
         String answer = request.getParameter("answer");
+        String categoryIdStr = request.getParameter("category");
+        
+        int categoryId = 1; // Default to General category
+        if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
+            try {
+                categoryId = Integer.parseInt(categoryIdStr);
+            } catch (NumberFormatException e) {
+                categoryId = 1;
+            }
+        }
 
         try {
             Connection con = DBConnection.getConnection();
 
             PreparedStatement ps = con.prepareStatement(
-                    "insert into questions(question,option1,option2,option3,option4,answer) values(?,?,?,?,?,?)"
+                    "INSERT INTO questions(question,option1,option2,option3,option4,answer,category_id) VALUES(?,?,?,?,?,?,?)"
             );
 
             ps.setString(1, question);
@@ -31,6 +41,7 @@ public class AddQuestionServlet extends HttpServlet {
             ps.setString(4, option3);
             ps.setString(5, option4);
             ps.setString(6, answer);
+            ps.setInt(7, categoryId);
 
             ps.executeUpdate();
             con.close();

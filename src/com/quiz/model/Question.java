@@ -8,6 +8,8 @@ public class Question {
     private String option3;
     private String option4;
     private String answer;
+    private int categoryId;
+    private String categoryName;
 
     public Question() {
     }
@@ -20,6 +22,17 @@ public class Question {
         this.option3 = option3;
         this.option4 = option4;
         this.answer = answer;
+    }
+
+    public Question(int id, String question, String option1, String option2, String option3, String option4, String answer, int categoryId) {
+        this.id = id;
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
+        this.categoryId = categoryId;
     }
 
     public int getId() {
@@ -76,5 +89,21 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
